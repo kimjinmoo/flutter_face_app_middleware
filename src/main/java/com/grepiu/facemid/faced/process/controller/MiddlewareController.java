@@ -21,7 +21,7 @@ public class MiddlewareController {
   @GetMapping("/execute/{imageUrl}")
   public ResponseEntity<Object> executeShell(
       @PathVariable("imageUrl") String imageUrl
-  ) {
+  ) throws Exception {
     // 이미지 분석을 실행한다.
     middlewareService.executeImage(imageUrl);
     return ResponseEntity.ok(null);
