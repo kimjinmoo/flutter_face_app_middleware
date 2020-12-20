@@ -1,5 +1,6 @@
 package com.grepiu.facemid.faced;
 
+import com.grepiu.facemid.faced.process.helpers.ExecuteRest;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -34,6 +35,7 @@ public class FaceToyMiddleWareApplication {
 		for(String file : files.list()) {
 			String jsons = new String(Files.readAllBytes(Paths.get(batchPath+file)));
 			log.info("file : {}", jsons);
+			ExecuteRest.request(jsons);
 		}
 		// 경로로 파일을 체크 후 API서버로 전달 한다.
 		log.info("check...");
