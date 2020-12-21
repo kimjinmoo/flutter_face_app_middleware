@@ -32,12 +32,22 @@ public class FaceToyMiddleWareApplication {
 	@Scheduled(cron = "* * * * * *")
 	public void check() throws Exception {
 		File files = new File(batchPath);
+		if(files.exists()) {
+			for(String fileName : files.list()) {
+				// read File
+				String jsons = new String(Files.readAllBytes(Paths.get(batchPath+fileName)));
 
-		if(Optional.of(files).isPresent()) {
-			for(String file : files.list()) {
-				String jsons = new String(Files.readAllBytes(Paths.get(batchPath+file)));
-				log.info("file : {}", jsons);
+				// log
+				log.info("file Name : {}", fileName);
+				log.info("JSON : {}", jsons);
+
+				// execute API Call
 				ExecuteRest.request(jsons);
+
+				// remove File
+				File file = new File(batchPath+fileName);
+				// 처리 후 파일은 삭제한다.
+//				if(file.isFile()) file.delete();
 			}
 		} else {
 			log.info("no files...");

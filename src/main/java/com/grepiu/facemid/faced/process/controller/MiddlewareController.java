@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,9 +19,9 @@ public class MiddlewareController {
 
   final MiddlewareService middlewareService;
 
-  @GetMapping("/execute/{imageUrl}")
+  @GetMapping("/execute")
   public ResponseEntity<Object> executeShell(
-      @PathVariable("imageUrl") String imageUrl
+      @RequestParam("imageUrl") String imageUrl
   ) throws Exception {
     // 이미지 분석을 실행한다.
     middlewareService.executeImage(imageUrl);
