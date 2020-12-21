@@ -19,9 +19,10 @@ public class ExecuteShell {
   /**
    * 쉘 스크립트를 실행한다.
    *
+   * @param uid 유니크 IDs
    * @param imageFilePath 이미지 경로
    */
-  public void executeImageModule(String imageFilePath) throws Exception {
+  public void executeImageModule(String uid, String imageFilePath) throws Exception {
     log.info("execute : {}", executeShell + " " + imageFilePath);
     Process p = Runtime.getRuntime().exec(executeShell + " " + imageFilePath);
     InputStream is = p.getInputStream();

@@ -19,10 +19,11 @@ public class MiddlewareService {
    *
    * 머신러닝을 실행한다.
    *
+   * @param uid 유니크 ID
    * @param imageUrl 이미지 URL
    * @throws Exception
    */
-  public void executeImage(String imageUrl) throws Exception {
-    executeShell.executeImageModule(imageUrl);
+  public void executeImage(String uid, String imageUrl) throws Exception {
+    executeShell.executeImageModule(uid, imageUrl);
   }
 }
